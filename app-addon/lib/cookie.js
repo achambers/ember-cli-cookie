@@ -10,5 +10,9 @@ export default Em.Object.extend({
         Em.run(null, reject, e);
       }
     });
+  },
+
+  get: function(key) {
+    return Em.$.cookie(key);
   }
 });
