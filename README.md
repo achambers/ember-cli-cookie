@@ -28,7 +28,7 @@ In an initializer, inject the `cookie` object where needed:
 export default {
   name: 'test-initializer',
   after: ['cookie'],
-  
+
   initialize: function(container, app) {
     app.inject('controller', 'cookie', 'cookie:main');
   }
@@ -47,11 +47,33 @@ export default Ember.Controller.extend({
     testAction: function() {
       var self   = this;
       var cookie = this.get('cookie');
-      
+
       cookie.set('my-key', 'my-value')
         .then(function() {
           self.transitionToRoute('success');
         });
+    }
+  }
+});
+```
+
+### \#get(key)
+
+Use this function to get a cookie, eg:
+
+```javascript
+// /controllers/test.js
+
+export default Ember.Controller.extend({
+  actions: {
+    testAction: function() {
+      var self   = this;
+      var cookie = this.get('cookie');
+      var token  = cookie.get('my-key');
+
+      if (!token) {
+        this.transitionTo('login');
+      }
     }
   }
 });
