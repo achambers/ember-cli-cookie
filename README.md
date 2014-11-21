@@ -48,7 +48,7 @@ export default Ember.Controller.extend({
       var self   = this;
       var cookie = this.get('cookie');
 
-      cookie.set('my-key', 'my-value')
+      cookie.setCookie('my-key', 'my-value')
         .then(function() {
           self.transitionToRoute('success');
         });
@@ -69,7 +69,7 @@ export default Ember.Controller.extend({
     testAction: function() {
       var self   = this;
       var cookie = this.get('cookie');
-      var token  = cookie.get('my-key');
+      var token  = cookie.getCookie('my-key');
 
       if (!token) {
         this.transitionTo('login');
