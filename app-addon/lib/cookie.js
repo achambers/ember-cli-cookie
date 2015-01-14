@@ -14,5 +14,9 @@ export default Em.Object.extend({
 
   getCookie: function(key) {
     return Em.$.cookie(key);
+  },
+
+  removeCookie: function(key, options) {
+    return Em.$.removeCookie(key, options);
   }
 });
