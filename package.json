@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-cookie",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Wrap $.cookie in Ember goodness",
   "main": "index.js",
   "scripts": {
