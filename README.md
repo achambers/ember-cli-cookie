@@ -47,7 +47,7 @@ Use this function to set a cookie, eg:
 export default Ember.Controller.extend({
   actions: {
     testAction: function() {
-      var self   = this;
+      var self = this;
 
       this.cookie.set('my-key', 'my-value')
         .then(function() {
@@ -68,7 +68,7 @@ Use this function to get a cookie, eg:
 export default Ember.Controller.extend({
   actions: {
     testAction: function() {
-      var self   = this;
+      var self = this;
       this.cookie.get('my-key');
 
       if (!token) {
