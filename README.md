@@ -25,13 +25,15 @@ npm install --save-dev ember-cli-cookie
 In an initializer, inject the `cookie` object where needed:
 
 ```javascript
-export default {
-  name: 'test-initializer',
-  after: ['cookie'],
+// /initializers/test.js
+export function initialize(container, application) {
+    application.inject('controller', 'cookie', 'cookie:main');
+}
 
-  initialize: function(container, app) {
-    app.inject('controller', 'cookie', 'cookie:main');
-  }
+export default {
+    name: 'test-initializer',
+    after: ['cookie'],
+    initialize: initialize
 }
 ```
 
@@ -45,10 +47,9 @@ Use this function to set a cookie, eg:
 export default Ember.Controller.extend({
   actions: {
     testAction: function() {
-      var self   = this;
-      var cookie = this.get('cookie');
+      var self = this;
 
-      cookie.setCookie('my-key', 'my-value')
+      this.cookie.set('my-key', 'my-value')
         .then(function() {
           self.transitionToRoute('success');
         });
@@ -67,9 +68,8 @@ Use this function to get a cookie, eg:
 export default Ember.Controller.extend({
   actions: {
     testAction: function() {
-      var self   = this;
-      var cookie = this.get('cookie');
-      var token  = cookie.getCookie('my-key');
+      var self = this;
+      this.cookie.get('my-key');
 
       if (!token) {
         this.transitionTo('login');
