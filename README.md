@@ -37,7 +37,7 @@ export default {
 }
 ```
 
-### \#set(key, value)
+### \#set(key, value, options)
 
 Use this function to set a cookie, eg:
 
@@ -49,7 +49,7 @@ export default Ember.Controller.extend({
     testAction: function() {
       var self = this;
 
-      this.cookie.set('my-key', 'my-value')
+      this.cookie.set('my-key', 'my-value', { expires: 7, path: '/' })
         .then(function() {
           self.transitionToRoute('success');
         });
