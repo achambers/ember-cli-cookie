@@ -68,12 +68,27 @@ Use this function to get a cookie, eg:
 export default Ember.Controller.extend({
   actions: {
     testAction: function() {
-      var self = this;
       this.cookie.get('my-key');
 
       if (!token) {
         this.transitionTo('login');
       }
+    }
+  }
+});
+```
+
+### \#removeCookie(key)
+
+Use this function to remove/delete a cookie, eg:
+
+```javascript
+// /controllers/test.js
+
+export default Ember.Controller.extend({
+  actions: {
+    testAction: function() {
+      this.cookie.removeCookie('my-key');
     }
   }
 });
