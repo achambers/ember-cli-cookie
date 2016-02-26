@@ -37,7 +37,7 @@ export default {
 }
 ```
 
-### \#set(key, value, options)
+### \#setCookie(key, value, options)
 
 Use this function to set a cookie, eg:
 
@@ -49,7 +49,7 @@ export default Ember.Controller.extend({
     testAction: function() {
       var self = this;
 
-      this.cookie.set('my-key', 'my-value', { expires: 7, path: '/' })
+      this.cookie.setCookie('my-key', 'my-value', { expires: 7, path: '/' })
         .then(function() {
           self.transitionToRoute('success');
         });
@@ -58,7 +58,7 @@ export default Ember.Controller.extend({
 });
 ```
 
-### \#get(key)
+### \#getCookie(key)
 
 Use this function to get a cookie, eg:
 
@@ -68,7 +68,7 @@ Use this function to get a cookie, eg:
 export default Ember.Controller.extend({
   actions: {
     testAction: function() {
-      this.cookie.get('my-key');
+      this.cookie.getCookie('my-key');
 
       if (!token) {
         this.transitionTo('login');
